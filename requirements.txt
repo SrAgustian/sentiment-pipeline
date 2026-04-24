@@ -14,7 +14,7 @@ openpyxl==3.1.2               # export ke Excel jika diperlukan
 
 # NLP & preprocessing Bahasa Indonesia
 nltk==3.8.1
-PySastrawi==1.0.0             # stemming Bahasa Indonesia
+PySastrawi==1.2.0             # stemming Bahasa Indonesia
 # InSet Lexicon didownload manual, lihat scripts/download_assets.py
 
 # Machine learning
