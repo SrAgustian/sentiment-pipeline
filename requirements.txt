@@ -1,0 +1,35 @@
+# ============================================================
+# requirements.txt — Library Python untuk proyek ini
+# Install: pip install -r requirements.txt
+# ============================================================
+
+# Web scraping
+selenium==4.21.0
+webdriver-manager==4.0.1      # auto-manage ChromeDriver
+
+# Data processing
+pandas==2.2.2
+numpy==1.26.4
+openpyxl==3.1.2               # export ke Excel jika diperlukan
+
+# NLP & preprocessing Bahasa Indonesia
+nltk==3.8.1
+PySastrawi==1.0.0             # stemming Bahasa Indonesia
+# InSet Lexicon didownload manual, lihat scripts/download_assets.py
+
+# Machine learning
+scikit-learn==1.4.2
+joblib==1.4.2                  # serialisasi model
+
+# Database
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.30
+
+# Utilities
+python-dotenv==1.0.1           # baca file .env
+requests==2.32.2
+
+# Opsional: untuk eksplorasi data lokal
+# jupyter==1.0.0
+# matplotlib==3.9.0
+# seaborn==0.13.2
