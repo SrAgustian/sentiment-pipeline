@@ -65,7 +65,7 @@ def scroll_and_load(driver, target_count=1000):
         
         prev_count = current_count
         
-        # JURUS DEWA: Simulasi Roda Mouse Fisik (Native Wheel Scroll)
+        # Native Wheel Scroll)
         if len(reviews) > 0:
             last_review = reviews[-1]
             try:
@@ -73,14 +73,14 @@ def scroll_and_load(driver, target_count=1000):
                 ActionChains(driver).move_to_element(last_review).perform()
                 time.sleep(0.5)
                 
-                # Putar roda mouse ke bawah sejauh 5000 pixel!
+                # Putar roda mouse ke bawah sejauh 5000 pixel
                 scroll_origin = ScrollOrigin.from_element(last_review)
                 ActionChains(driver).scroll_from_origin(scroll_origin, 0, 5000).perform()
             except Exception as e:
                 # Fallback jika ActionChains gagal
                 driver.execute_script("arguments[0].scrollIntoView(true);", last_review)
             
-        # Jeda biar loading muter-muter Google selesai
+        # Jeda 
         time.sleep(random.uniform(3, 5))
         
     return driver.find_elements(By.CSS_SELECTOR, 'div[class*="RHo1pe"]')
@@ -129,25 +129,32 @@ def save_to_csv(data, filename):
 
 # --- Eksekusi Program ---
 APP_URLS = {
-    "shopee" : "https://play.google.com/store/apps/details?id=com.shopee.id&hl=id",
+    "shopee"    : "https://play.google.com/store/apps/details?id=com.shopee.id&hl=id",
+    "tokopedia" : "https://play.google.com/store/apps/details?id=com.tokopedia.tkpd&hl=id",
+    "blibli"    : "https://play.google.com/store/apps/details?id=blibli.mobile.commerce&hl=id"
 }
 
 print("Sedang menyiapkan browser...")
 driver = init_driver(headless=False)
 
 try:
-    app_name = "shopee"
+   
+    app_name = "blibli"  # Ganti dengan "shopee" atau "blibli" sesuai kebutuhan
+    
     print(f"Membuka halaman {APP_URLS[app_name]}...")
     driver.get(APP_URLS[app_name])
     time.sleep(3) 
     
-    reviews_elements = scroll_and_load(driver, target_count=1000)
+    
+    reviews_elements = scroll_and_load(driver, target_count=10000)
     print(f"\nTotal elemen ulasan yang siap diekstrak: {len(reviews_elements)}")
     
     data = extract_reviews(reviews_elements, app_name)
     if data:
-        save_to_csv(data, f"data/raw_{app_name}_test.csv")
+       
+        save_to_csv(data, f"data/raw_{app_name}.csv")
     else:
         print("Peringatan: Tidak ada data ulasan yang berhasil diekstrak.")
 finally:
     driver.quit()
+    print("Selesai dan browser ditutup.")

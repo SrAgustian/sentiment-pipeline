@@ -18,16 +18,22 @@ PySastrawi==1.2.0             # stemming Bahasa Indonesia
 # InSet Lexicon didownload manual, lihat scripts/download_assets.py
 
 # Machine learning
-scikit-learn==1.4.2
+scikit-learn==1.8.0
 joblib==1.4.2                  # serialisasi model
 
 # Database
 psycopg2-binary==2.9.9
-SQLAlchemy==2.0.30
+# SQLAlchemy==2.0.30
 
 # Utilities
 python-dotenv==1.0.1           # baca file .env
 requests==2.32.2
+
+# Visualisasi
+streamlit>=1.30.0
+pandas
+psycopg2-binary
+plotly
 
 # Opsional: untuk eksplorasi data lokal
 # jupyter==1.0.0
